@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Banking System</title>
+            
+            <script>
+               function Add()
+               {
+                  var initial_Amount = document.getElementById("Amount").value;
+                  if(initial_Amount == '')
+                  {
+                     alert("Your amount is empty ");
+                  }
+                  else if(initial_Amount<5000)
+                  {
+                    alert("min 5000 is needed to create an account")
+                  }
+                  else
+                  {
+                    document.getElementById('total').innerText=initial_Amount;
+                    document.getElementById("Amount").value="";
+                    alert("account created")     
+                  }
+                }
+    
+                function Withdraw()
+                {
+                    var total_balance = document.getElementById('total').innerText;
+                    var withdraw_Amount = document.getElementById("Amount").value;
+                    var balance_after_withraw = total_balance-withdraw_Amount;
+                    if (withdraw_Amount=="") 
+                    {
+                      alert("amount empty");
+                    }
+                    else if(withdraw_Amount > total_balance)
+                    {
+                      alert("not sufficient balance");
+                    }
+                    else
+                    {
+                       document.getElementById('total').innerText=balance_after_withraw;
+                       document.getElementById('Amount').value="";
+                    alert('withdraw success');
+                    }
+                }          
+
+                function Deposit()
+                {
+                  var total_balance = document.getElementById('total').innerText;
+                  var deposit_Amount = document.getElementById("Amount").value;
+                  var balance_after_deposit = parseInt(total_balance)+parseInt(deposit_Amount);    
+                  if(deposit_Amount == '')
+                  {
+                     alert("Your amount is empty");
+                  } 
+                  else
+                  {
+                     document.getElementById('total').innerText=balance_after_deposit;
+                     document.getElementById("Amount").value="";
+                     alert("amount added successfully");
+                  }
+                }
+
+            </script>
+          
+    </head>
+    <body> 
+        <form >
+            <div class="row align-items-center">
+            <div class="col mb-3">
+              <label for="exampleInputAmount" class="form-label"><b>Enter Amount</b></label>
+              <input type="text" class="form-control" id="Amount">
+              
+            </div>
+            <div class="col mb-3" >
+                <label for="exampleInputAmount" class="form-label"><b>Available Balance</b></label>
+                <input disabled type="text" class="form-control" id="Remainingbalance">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <button type="button"  onclick="Add()">Create Account</button>
+            </div>
+            <div class="col">
+                <button type="button"  onclick="Withdraw()">Withdraw Money</button>
+            </div>
+            <div class="col">
+                <button type="button"  onclick="Deposit()">Deposit Money</button>
+                </div>
+        </div>
+        </form>
+    </body>
+</html>
